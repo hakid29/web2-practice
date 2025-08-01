@@ -1,0 +1,18 @@
+DROP USER IF EXISTS 'Lee'@'%';
+CREATE USER 'Lee'@'%' IDENTIFIED BY '1234';
+GRANT ALL PRIVILEGES ON *.* TO 'Lee'@'%';
+FLUSH PRIVILEGES;
+SHOW GRANTS FOR 'Lee'@'%';
+
+CREATE DATABASE IF NOT EXISTS testDB;
+
+USE testDB;
+
+CREATE TABLE users(
+    id VARCHAR(100),
+    pw VARCHAR(100)
+);
+
+INSERT INTO users (id, pw) VALUES
+("admin", "admin29"),
+("test", "test29");

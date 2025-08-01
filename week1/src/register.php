@@ -14,12 +14,19 @@
         $username = $_POST['username'];
         $password = $_POST['password'];
         
-        $sql = "SELECT * FROM users WHERE id = '$username' AND pw = '$password'";
+        $sql = "SELECT * FROM users WHERE id = '$username'";
         if (mysqli_num_rows(mysqli_query($conn, $sql)) > 0) {
-            echo "Welcome, " . $username . "<br>";
-        } else {
-            echo "Login failed<br><br>";
-            echo '<a href="login.php">Try again</a>';
+            echo "Already registered ID<br><br>";
+            echo '<a href="register.php">Try again</a>';
+            exit();
+        }
+
+        $register_sql = "INSERT INTO users (id, pw) VALUES ('$username', '$password')";
+        if (mysqli_query($conn, $register_sql)) {
+            echo "<h2>Registration successful!</h2>";
+            echo '<a href="index.php">Go back to home</a>';
+        } else{
+            echo "<h2>Registration failed.</h2>";
         }
         exit();
     }
@@ -27,10 +34,10 @@
 
 <html>
     <head>
-        <h1>Login</h1>
+        <h1>Register</h1>
     </head>
     <body>
-        <form action="login.php" method="POST">
+        <form action="register.php" method="POST">
             <label for="username">ID: </label>
             <input type="text" name="username"><br><br>
             <label for="password">PW: </label>
