@@ -2,10 +2,10 @@
     session_start(); // PHPSESSID가 브라우저 쿠키에 난수 형태로 저장됨
     if ($_SERVER["REQUEST_METHOD"] == "POST") { // 요청이 POST인 경우에 db에 등록 진행
         // db 연결
-        $host = "db";
-        $user = "Lee";
-        $password = "1234";
-        $db = "testDB";
+        $host = getenv("DB_HOST");
+        $user = getenv("MYSQL_USER");
+        $password = getenv("MYSQL_PASSWORD");
+        $db = getenv("MYSQL_DATABASE");
         $conn = mysqli_connect($host, $user, $password, $db);
         if (!$conn) {
             die("Server connect failed" . mysqli_connect_error());
