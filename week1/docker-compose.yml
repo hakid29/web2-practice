@@ -7,13 +7,13 @@ services:
       - ./src:/var/www/html
     networks:
       - default
+    env_file:
+      - .env
+
   db:
     image: mysql:latest
-    environment:
-      MYSQL_ROOT_PASSWORD: 12345
-      MYSQL_USER: Lee
-      MYSQL_PASSWORD: 1234
-      MYSQL_DATABASE: testDB
+    env_file:
+      - .env
     ports:
       - "3306:3306"
     volumes:
