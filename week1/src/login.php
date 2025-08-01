@@ -1,4 +1,5 @@
 <?php
+    session_start();
     if ($_SERVER["REQUEST_METHOD"] == "POST") { // 요청이 POST인 경우에 db에 등록 진행
         // db 연결
         $host = "db";
@@ -16,7 +17,9 @@
         
         $sql = "SELECT * FROM users WHERE id = '$username' AND pw = '$password'";
         if (mysqli_num_rows(mysqli_query($conn, $sql)) > 0) {
+            $_SESSION['user_id'] = $username;
             echo "Welcome, " . $username . "<br>";
+            header("Location: dashboard.php"); // login 성공 시 세션 설정하고 dashboard로 redirect
         } else {
             echo "Login failed<br><br>";
             echo '<a href="login.php">Try again</a>';
