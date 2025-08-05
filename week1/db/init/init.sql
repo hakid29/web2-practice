@@ -9,6 +9,7 @@ CREATE TABLE users(
 );
 
 CREATE TABLE dashboard(
+    post_id INT AUTO_INCREMENT PRIMARY KEY,
     id VARCHAR(100),
     title VARCHAR(256) NOT NULL,
     content TEXT NOT NULL,
