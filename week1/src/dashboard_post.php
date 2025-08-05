@@ -20,7 +20,7 @@
         $user = $_SESSION['user_id'];
         $title = $_POST['title'];
         $content = $_POST['content'];
-        
+        // todo: 게시글에 id 인자 넣어야함 (나중에 글 목록 띄우려면)
         $sql = "INSERT INTO dashboard (id,title,content) VALUES ('$user', '$title', '$content')"; // timestamp는 알아서 드감
         if (mysqli_query($conn, $sql)) {
             echo "<h2>Post successful!</h2>";
