@@ -26,6 +26,7 @@
     </head>
     <body>
         <h2>Posts</h2>
+        -------------------------------------------------------------------------
         <?php foreach ($posts as $post): ?>
             <div>
                 <strong><?= htmlspecialchars($post['title'])?></strong> |

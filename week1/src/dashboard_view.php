@@ -22,5 +22,9 @@
     echo "Author: " . htmlspecialchars($post['id']) . "<br>";
     echo "Time: " . htmlspecialchars($post['time_']) . "<br><br>";
     echo "Content: " . htmlspecialchars($post['content']) . "<br><br>";
+
+    if ($_SESSION['user_id'] == $post['id']) {
+        echo '<a href="dashboard_edit.php?post_id=' . $post['post_id'] . '">Edit</a><br><br>'; // GET method
+    }
     echo '<a href="dashboard.php">Go back</a>';
 ?>

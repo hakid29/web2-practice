@@ -1,5 +1,9 @@
 <?php
     session_start(); // PHPSESSID가 브라우저 쿠키에 난수 형태로 저장됨
+    if (isset($_SESSION['user_id'])) { // 이미 로그인된 경우, dashboard로 redirect
+        header("Location: dashboard.php");
+    }
+
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // db 연결
         $host = getenv("DB_HOST");
