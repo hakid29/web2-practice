@@ -15,15 +15,6 @@
         die("Server connect failed" . mysqli_connect_error());
     }
 
-    $sql = "SELECT * FROM dashboard WHERE post_id = " . $_GET["post_id"];
-    $post = mysqli_query($conn, $sql);
-    $post = mysqli_fetch_assoc($post);
-    if ($post['id'] != $_SESSION['user_id']) {
-        echo "No permission<br><br>";
-        echo '<a href="dashboard.php">Go back to dashboard</a>';
-        exit();
-    }
-
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $user = $_SESSION['user_id'];
         $title = $_POST['title'];
@@ -37,6 +28,15 @@
             echo "<h2>Edit failed.</h2>";
         }
         exit();
+    } else {
+        $sql = "SELECT * FROM dashboard WHERE post_id = " . $_GET["post_id"];
+        $post = mysqli_query($conn, $sql);
+        $post = mysqli_fetch_assoc($post);
+        if ($post['id'] != $_SESSION['user_id']) {
+            echo "No permission<br><br>";
+            echo '<a href="dashboard.php">Go back to dashboard</a>';
+            exit();
+        }
     }
 ?>
 

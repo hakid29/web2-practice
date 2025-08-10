@@ -26,7 +26,7 @@
     </head>
     <body>
         <h2>Posts</h2>
-        -------------------------------------------------------------------------
+        -------------------------------------------------------------------------<br>
         <?php foreach ($posts as $post): ?>
             <div>
                 <strong><?= htmlspecialchars($post['title'])?></strong> |
@@ -37,7 +37,7 @@
             </div>
         <?php endforeach; ?>
             <a href="dashboard_post.php">
-                <button type="button">Wirte a post</button><br><br>
+                <button type="button">Write a post</button><br><br>
             </a>
             <a href="index.php">Go back to home</a><br><br>
             <a href="logout.php">Logout</a>
